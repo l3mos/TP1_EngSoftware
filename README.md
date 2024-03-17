@@ -1,7 +1,9 @@
 # Trabalho Prático 1 - Engenharia de Software
 
 ## Membros da Equipe
-- Gabriel Lemos: Desenvolvedor Full Stack
+- Gabriel Lemos : Desenvolvedor Full Stack
+- Lucas Duarte : Desenvolvedor Full Stack
+- Camila : Desenvolvedora Full Stack
 
 ## Backlog do Produto
 Deseja-se implementar um sistema de gerenciamento de compra de mercadorias, em que seja capaz de realizar as seguintes tarefas, tanto como usuário quanto como administardor do sistema:
