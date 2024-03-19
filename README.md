@@ -4,7 +4,8 @@
 - Gabriel Lemos - 2021032056 : Desenvolvedor Full Stack
 - Lucas Duarte -  2014015877: Desenvolvedor Full Stack
 - Camila Nicola -  2021423837 : Desenvolvedora Full Stack
-
+- Lucas Santos Teles - 2017014995 : Desenvolvedor Full Stack
+  
 ## Backlog do Produto
 Deseja-se implementar um sistema de gerenciamento de compra de mercadorias, em que seja capaz de realizar as seguintes tarefas, tanto como usuário quanto como administardor do sistema:
 - Como um administrador, eu quero cadastrar novos itens no estoque.
