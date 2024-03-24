@@ -25,22 +25,24 @@ Deseja-se implementar um sistema de gerenciamento de compra de mercadorias, em q
 História #1: Como um gerente, eu quero adicionar usuários.
 
 Tarefas e responsáveis:
-
-Instalar Node.js e Express. [-]
-Criar um sistema de login. [-]
-Criar uma tela de login. [-]
-Usar o email para definir quem tem acesso ao estoque. [-]
+- Instalar Node.js e Express. [-]
+- Criar um sistema de login. [-]
+- Criar uma tela de login. [-]
+- Usar o email para definir quem tem acesso ao estoque. [-]
 
 
 História #2: Como um administrador, eu quero cadastrar novos itens no estoque.
 
 Tarefas e responsáveis:
+- Instalar banco de dados. [-]
+- Instalar Node.js e Express. [-]
+- Criar as primeiras tabelas. [-]
+- Garantir que os administradores possam acrescentar nova linhas na tabela de produtos. [-]
+- Implementar a logica de criar e editar itens. [-]
 
-Instalar banco de dados. [-]
-Instalar Node.js e Express. [-]
-Criar as primeiras tabelas. [-]
-Garantir que os administradores possam acrescentar nova linhas na tabela de produtos. [-]
-Implementar a logica de criar e editar itens. [-]
+
+
+
 
 
 História #3: Como um usuário, eu quero listar os produtos no estoque.
