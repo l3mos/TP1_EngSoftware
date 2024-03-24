@@ -26,8 +26,8 @@ História #1: Como um gerente, eu quero adicionar usuários.
 
 Tarefas e responsáveis:
 - Instalar Node.js e Express. [-]
-- Criar um sistema de login. [-]
-- Criar uma tela de login. [-]
+- Criar um sistema de login. [Camila]
+- Criar uma tela de login e integrar com o sistema criado. [-]
 - Usar o email para definir quem tem acesso ao estoque. [-]
 
 
@@ -46,6 +46,7 @@ História #3: Como um usuário, eu quero listar os produtos no estoque.
 Tarefas e responsáveis:
 
 - Criar tabela de listagem dos produtos. [-]
+- Criar interface de visualização da lista [-]
 - Criar logica de consulta do banco de dados. [-]
 - Criar logica de listagem de produtos. [-]
 
@@ -54,7 +55,7 @@ História #4: Como um usuário, eu quero ver e alterar a quantidade de itens em 
 
 Tarefas e responsáveis:
 
-- Implemntar a visualização de itens no estoque
+- Implementar a visualização de itens no estoque [-]
 - Implementar a mudança da quantidade de cada instancia do banco de dados. [-]
 - Atualizar no banco de dados a quantidade de itens após a alteração [-]
 
@@ -64,8 +65,9 @@ História #5: Como um gerente, eu quero aplicar desconto aos itens que eu deseja
 Tarefas e responsáveis:
 
 - Criar lógica de pesquisa de itens no banco de dados. [-]
-- Criar lógica de redução de preço no produto
-- Atualizar o preço do produto no estoque
+- Criar indicador visual de mudança de preço (site) [-]
+- Criar lógica de redução de preço no produto [-]
+- Atualizar o preço do produto no estoque [-]
 
 
 História #6: Como um usuário, eu quero pesquisar itens e filtrar os produtos por preço e tipo.
@@ -82,6 +84,7 @@ História #7: Como gerente eu quero poder saber quais produtos estão acabando
 Tarefas e responsáveis:
 
 - Criar lógica de verificação da quantidade de itens a cada venda, caso esteja abaixo de um valor estipulado, avisar ao usuário da plataforma. [-]
+- Criar ícone de notificação de quantidade baixa de produto (front end) [-]
 
   
 ## Tecnologias
