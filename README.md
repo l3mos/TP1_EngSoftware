@@ -50,20 +50,39 @@ Tarefas e responsáveis:
 - Criar logica de listagem de produtos. [-]
 
 
-História #4: Como um usuário, eu quero alterar a quantidade de itens em estoque.
+História #4: Como um usuário, eu quero ver e alterar a quantidade de itens em estoque.
 
 Tarefas e responsáveis:
 
+- Implemntar a visualização de itens no estoque
 - Implementar a mudança da quantidade de cada instancia do banco de dados. [-]
 - Atualizar no banco de dados a quantidade de itens após a alteração [-]
 
 
-História #5: Como um usuário, eu quero pesquisar itens.
+História #5: Como um gerente, eu quero aplicar desconto aos itens que eu desejar.
 
 Tarefas e responsáveis:
 
 - Criar lógica de pesquisa de itens no banco de dados. [-]
-- Criar barra de Pesquisa (front end). [-]
+- Criar lógica de redução de preço no produto
+- Atualizar o preço do produto no estoque
 
+
+História #6: Como um usuário, eu quero pesquisar itens e filtrar os produtos por preço e tipo.
+
+Tarefas e responsáveis:
+
+- Criar lógica de pesquisa de itens utilizando algum determinado parâmetro (preço, tipo, etc). [-]
+- Criar barra de Pesquisa (front end). [-]
+- Criar barra de Filtragem (front end). [-]
+- Criar atalho de Ordenação (front end)
+
+História #7: Como gerente eu quero poder saber quais produtos estão acabando
+
+Tarefas e responsáveis:
+
+- Criar lógica de verificação da quantidade de itens a cada venda, caso esteja abaixo de um valor estipulado, avisar ao usuário da plataforma. [-]
+
+  
 ## Tecnologias
 - Python, JavaScript, NodeJs, SQL, HTML (a princípio)
