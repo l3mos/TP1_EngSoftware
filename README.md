@@ -26,9 +26,9 @@ História #1: Como um gerente, eu quero adicionar usuários.
 
 Tarefas e responsáveis:
 - Instalar Node.js e Express. [-]
-- Criar um sistema de login. [Camila]
+- Criar um sistema de login. [Camila] feito e pendente revisão
 - Criar uma tela de login e integrar com o sistema criado. [-]
-- Usar o email para definir quem tem acesso ao estoque. [-]
+- Criar tela inicial gerente e tela de cadastro de usuario 
 
 
 História #2: Como um administrador, eu quero cadastrar novos itens no estoque.
