@@ -28,7 +28,7 @@ Tarefas e responsáveis:
 - Instalar Node.js e Express. [Lucas Teles]
 - Criar um sistema de login. [Camila] feito e pendente revisão
 - Criar uma tela de login e integrar com o sistema criado. [-]
-- Criar tela inicial gerente e tela de cadastro de usuario 
+- Criar tela inicial gerente e tela de cadastro de usuario [Lucas Duarte]
 
 
 História #2: Como um administrador, eu quero cadastrar novos itens no estoque.
