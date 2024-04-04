@@ -25,7 +25,7 @@ Deseja-se implementar um sistema de gerenciamento de compra de mercadorias, em q
 História #1: Como um gerente, eu quero adicionar usuários.
 
 Tarefas e responsáveis:
-- Instalar Node.js e Express. [-]
+- Instalar Node.js e Express. [Lucas Teles]
 - Criar um sistema de login. [Camila] feito e pendente revisão
 - Criar uma tela de login e integrar com o sistema criado. [-]
 - Criar tela inicial gerente e tela de cadastro de usuario 
