@@ -12,14 +12,15 @@ Deseja-se implementar um sistema de gerenciamento de compra de mercadorias, em q
 - como vendedor, eu quero conseguir registrar uma venda
 - como vendedor, eu quero pesquisar um produto e ver as características dele 
 - como vendedor, eu quero sinalizar que a contagem do sistema está incorreto
+- como vendedor, eu quero conseguir filtrar os produtos por tipo
+- como vendedor, eu quero conseguir ordenar os produtos de uma busca por preço
+- como vendedor, eu quero conseguir notificar o gerente sobre a necessidade de mais material
 - como gerente, eu quero conseguir adicionar produtos ao sistema
 - como gerente, eu quero ver as vendas registradas
 - como gerente, eu quero conseguir alterar o preço dos produtos
 - como gerente, eu quero dar descontos em produtos e indicar que eles estão em promoção
-- como vendedor, eu quero conseguir filtrar os produtos por tipo
-- como vendedor, eu quero conseguir ordenar os produtos de uma busca por preço
 - como gerente, eu quero receber notificações sobre produtos que estão acabando
-- como vendedor, eu quero conseguir notificar o gerente sobre a necessidade de mais material
+
 
 ## Backlog da Sprint
 História #1: Como um gerente, eu quero adicionar usuários.
