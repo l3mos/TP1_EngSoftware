@@ -1,0 +1,86 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif; /* Sets the font for the entire page */
+    line-height: 1.6; /* Increases line spacing for readability */
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark grey text color */
+}
+
+/* Header styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Navigation menu styles */
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #c1c1c1;
+}
+
+/* Section styles */
+section {
+    padding: 20px;
+    margin: 0 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Styles for error messages */
+#error-msg {
+    color: red;
+    visibility: hidden; /* Hide by default, make visible with JS on error */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    nav ul {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
