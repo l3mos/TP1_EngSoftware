@@ -58,6 +58,7 @@ footer p {
     margin: 0;
 }
 
+
 #error-msg {
     color: red;
     visibility: hidden; 
@@ -72,12 +73,20 @@ table, th, td {
     border: 1px solid;
     text-align: center;
 }
-
+button{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    float: left;
+    background-color: 808080;
+}
+button :hover{
+    background-color: C0C0C0;
+}
 .container{
+    padding-top: 10px;
     width: 700px; 
-    margin-left: auto;
+    
     margin-right: auto;
-    text-align: center; 
+    text-align: left; 
 }
 @media (max-width: 600px) {
     nav ul {
