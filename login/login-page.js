@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (username === "vendedor") {
                 window.location.href = 'pag_inicial_gerente.html';
             } else if (username === "gerente") {
-                document.location.href  = 'pag_inicial_gerente.html';
+                document.location.href  = '/home/user/TP1_EngSoftware/gerente/pag_inicial_gerente.html';
             }
         } else {
             loginErrorMsg.style.opacity = 1;        }

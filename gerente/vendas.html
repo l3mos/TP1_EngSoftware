@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="vendas.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo, gerente</h1>
+        <nav>
+            <ul>
+                <li><a href="pag_inicial_gerente.html">Início</a></li>
+                <li><a href="#Prod">Produtos</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
+                <li><a href="vendas.html">Vendas</a></li>
+                <li><a href="register-page.html">Cadastrar funcionário</a></li>
+                <li><a href="/home/user/TP1_EngSoftware/login/login-page.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+    <section id="vendas">
+        <h2>Histórico deste mês</h2>
+        <table width="100%">
+            <tr>
+                <td>Produto</td>
+                <td>Quantidade</td>
+                <td>Valor/unidade</td>
+                <td>Valor total</td>
+                <td>Data</td>
+                <td>Horário</td>
+                <td>Vendedor</td>
+            </tr>
+            <tr>
+                <td>Pacote de papel</td>
+                <td>2</td>
+                <td>30,00</td>
+                <td>Valor total</td>
+                <td>18:25</td>
+                <td>Vendedor 1</td>
+                <td><a href="#detalhes-venda">Detalhes</a></td>
+            </tr>
+        </table>
+        
+    </section>
+    <section id="relatorio_vendas"><!--tentar fazer baixar um pdf-->
+        <h2>Gerar relatório</h2> 
+        <div id="inicio_mes_relatorio">
+           <select name="mes_inicio">
+            <option value="jan">Janeiro</option>
+            <option value="fev">Fevereiro</option>
+            <option value="mar">Março</option>
+            <option value="abr">Abril</option>
+            <option value="mai">Maio</option>
+            <option value="jun">Junho</option>
+            <option value="jul">Julho</option>
+            <option value="ago">Agosto</option>
+            <option value="set">Setembro</option>
+            <option value="out">Outubro</option>
+            <option value="nov">Novembro</option>
+            <option value="dez">Dezembro</option>
+           </select>
+           <div id="inicio_ano_relatorio">
+            <select name="ano_inicio">
+             <option value="2020">2020</option>
+             <option value="2021">2021</option>
+             <option value="2022">2022</option>
+             <option value="2023">2023</option>
+             <option value="2024">2024</option>
+           
+        </div>
+    </section>
+    <footer>
+       
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
