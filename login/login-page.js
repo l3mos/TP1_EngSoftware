@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if ((username === "vendedor" || username === "gerente") && password === "123") {
             alert("You have successfully logged in.");
             if (username === "vendedor") {
-                window.location.href = 'https://www.example.com/vendedor_dashboard.html';
+                window.location.href = 'pag_inicial_gerente.html';
             } else if (username === "gerente") {
-                document.location.href  = 'pag_inicial/gerente/pag_inicial_gerente.html';
+                document.location.href  = 'pag_inicial_gerente.html';
             }
         } else {
             loginErrorMsg.style.opacity = 1;        }

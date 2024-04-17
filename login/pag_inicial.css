@@ -1,14 +1,12 @@
-/* General body styles */
 body {
-    font-family: Arial, sans-serif; /* Sets the font for the entire page */
-    line-height: 1.6; /* Increases line spacing for readability */
+    font-family: Arial, sans-serif; 
+    line-height: 1.6; 
     margin: 0;
     padding: 0;
-    background: #f4f4f4; /* Light grey background */
-    color: #333; /* Dark grey text color */
+    background: #f4f4f4; 
+    color: #333; 
 }
 
-/* Header styles */
 header {
     background: #333;
     color: #fff;
@@ -16,7 +14,6 @@ header {
     text-align: center;
 }
 
-/* Navigation menu styles */
 nav {
     display: flex;
     justify-content: center;
@@ -39,11 +36,7 @@ nav ul li a {
     font-weight: bold;
 }
 
-nav ul li a:hover {
-    color: #c1c1c1;
-}
 
-/* Section styles */
 section {
     padding: 20px;
     margin: 0 10px;
@@ -51,7 +44,6 @@ section {
     border: 1px solid #ddd;
 }
 
-/* Footer styles */
 footer {
     text-align: center;
     padding: 10px 0;
@@ -66,13 +58,26 @@ footer p {
     margin: 0;
 }
 
-/* Styles for error messages */
 #error-msg {
     color: red;
-    visibility: hidden; /* Hide by default, make visible with JS on error */
+    visibility: hidden; 
 }
 
-/* Media query for responsiveness */
+#notificacao_ativa{
+    border: 1px solid #ddd;
+    border-radius: 10%;
+}
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid;
+    text-align: center;
+}
+
+.container{
+    width: 700px; 
+    margin-left: auto;
+    margin-right: auto; 
+}
 @media (max-width: 600px) {
     nav ul {
         text-align: center;

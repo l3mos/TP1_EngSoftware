@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         alert("User registered successfully!");
 
-        // Redireciona para a página de login após o registro bem-sucedido
-        window.location.href = "login-page.html";
+        // Redireciona para a página de login após o registro bem-sucedido ???? (se o gerente registrou, por que passar para a pagina de login?)
+        //window.location.href = "login-page.html";
     });
 });
 
