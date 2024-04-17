@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("login-form");
-    //const loginErrorMsg = document.getElementById("login-error-msg");
+    const loginErrorMsg = document.getElementById("login-error-msg");
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.location.href  = 'pag_inicial/gerente/pag_inicial_gerente.html';
             }
         } else {
-            alert("Invalid username and/or password");
-        }
+            loginErrorMsg.style.opacity = 1;        }
     });
 
 });
