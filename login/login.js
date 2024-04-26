@@ -8,14 +8,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const password = loginForm.password.value.trim();
     
         if ((username === "vendedor" || username === "gerente") && password === "123") {
-            alert("You have successfully logged in.");
             if (username === "vendedor") {
-                window.location.href = 'pag_inicial_gerente.html';
+                window.location.href = '../vendedor/pag_inicial_vendedor.html';
             } else if (username === "gerente") {
-                document.location.href  = '/home/user/TP1_EngSoftware/gerente/pag_inicial_gerente.html';
+                window.location.href = '../gerente/pag_inicial_gerente.html';
             }
-        } else {
-            loginErrorMsg.style.opacity = 1;        }
+        }
+        else {
+            loginErrorMsg.style.opacity = 1;
+        }
     });
 
 });

@@ -4,11 +4,11 @@ body {
     margin: 0;
     padding: 0;
     background: #f4f4f4; 
-    color: #333; 
+    color: #3a3a3a; 
 }
 
 header {
-    background: #333;
+    background: #3a3a3a;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -36,26 +36,11 @@ nav ul li a {
     font-weight: bold;
 }
 
-
 section {
     padding: 20px;
     margin: 0 10px;
     background: #fff;
     border: 1px solid #ddd;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer p {
-    margin: 0;
 }
 
 #error-msg {
@@ -67,6 +52,7 @@ footer p {
     border: 1px solid #ddd;
     border-radius: 10%;
 }
+
 table, th, td {
     border-collapse: collapse;
     border: 1px solid;
@@ -79,6 +65,7 @@ table, th, td {
     margin-right: auto;
     text-align: center; 
 }
+
 @media (max-width: 600px) {
     nav ul {
         text-align: center;

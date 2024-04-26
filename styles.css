@@ -1,0 +1,63 @@
+/* Arquivo de estilos universal */
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #3a3a3a;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+button {
+    align-self: flex-start;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Para caso seja necessário colocar sombras nos botões */
+.button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:hover {
+    background-color: #575757;
+}
+
+a.link-button {
+    text-decoration: none;
+}
+
+input[type=submit] {
+    width: 80%; /* Ajustando a largura do botão */
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type=submit]:hover {
+    background-color: #575757;
+}
+
+.copyright-text {
+    color: white;
+}

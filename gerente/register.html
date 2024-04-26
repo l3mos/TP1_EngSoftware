@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="register.css">
+    <script defer src="register_page.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Bem-vindo, Gerente</h1>
+        <nav>
+            <ul>
+                <li><a href="pag_inicial_gerente.html">Início</a></li>
+                <li><a href="#prod">Produtos</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
+                <li><a href="vendas.html">Vendas</a></li>
+                <li><a href="register.html">Cadastrar Funcionário</a></li>
+                <li><a href="../login/login.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="register-holder">
+        <h1>Cadastro</h1>
+        <select>
+            <optgroup label="Função">
+                <option value="vendedor">Vendedor</option>
+                <option value="gerente">Gerente</option>
+            </optgroup>
+        </select>
+        <form id="register-form">
+            <input type="text" name="username" id="username" class="register-form-field" placeholder="Nome de Usuário" required>
+            <input type="password" name="password" id="password" class="register-form-field" placeholder="Senha" required>
+            <input type="password" name="confirm-password" id="confirm-password" class="register-form-field" placeholder="Confirme a Senha" required>
+            <input type="submit" value="Cadastrar" id="register-form-submit">
+        </form>
+    </div>
+
+    <footer>
+        <p id="copyright-text">© 2024 GerCompras. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

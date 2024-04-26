@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const confirmPassword = registerForm['confirm-password'].value;
 
         if (password !== confirmPassword) {
-            alert("Passwords do not match. Please try again.");
+            // Escrever de uma forma melhor
+            alert("Senhas diferentes. Tente novamente.");
             return;
         }
 
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const users = getUsers();
         const userExists = users.some(user => user.username === username);
         if (userExists) {
-            alert("Username already exists. Please choose a different one.");
+            alert("Usuário já existe. Escolha outro nome de usuário.");
             return;
         }
 
@@ -25,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
         users.push({ username, password });
         saveUsers(users);
 
-        alert("User registered successfully!");
+        alert("Usuário registrado com sucesso!");
 
         // Retorna para a página de cadastro vazia
-        window.location.href = "register-page.html";
+        window.location.href = "register.html";
     });
 });
 
