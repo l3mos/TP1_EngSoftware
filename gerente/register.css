@@ -1,18 +1,13 @@
-html {
-    height: 100%;
-}
-
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    display:grid;
+    padding: 0;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    display: grid;
     justify-items: center;
     align-items: center;
     background: #f4f4f4; 
     color: #3a3a3a; 
-    
-    /* Definindo a altura do corpo como 100% da altura da viewport */
-    height: 100vh;
 }
 
 header {
@@ -46,14 +41,12 @@ nav ul li a {
 }
 
 #register-holder {
-    width: 50%;
-    height: 70%;
+    width: 96.5%;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
     display: grid;
     justify-items: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 7px;
-    box-shadow: 0px 0px 5px 2px black;
 }
 
 #register-form {
