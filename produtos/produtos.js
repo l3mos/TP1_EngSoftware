@@ -6,7 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Caminho para o arquivo CSV
-const csvFilePath = 'dataset.csv';
+const csvFilePath = '../dataset.csv';
+// const csvFilePath = 'dataset.csv';
 
 // Array para armazenar os dados do CSV
 let dataset = [];

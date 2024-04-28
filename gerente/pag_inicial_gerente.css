@@ -1,21 +1,3 @@
 body {
     background: #f4f4f4; 
 }
-
-#error-msg {
-    color: red;
-    visibility: hidden; 
-}
-
-#notificacao_ativa{
-    border: 1px solid #ddd;
-    border-radius: 10%;
-}
-
-.container{
-    padding-top: 10px;
-    width: 700px; 
-    
-    margin-right: auto;
-    text-align: left; 
-}

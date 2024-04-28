@@ -1,10 +1,5 @@
 /* Estilo específico para a página de notificações */
 
-/* Estilo do título */
-h1 {
-    margin: 0;
-}
-
 /* Estilo da lista de notificações */
 #lista-notificacoes {
     margin: 20px;
