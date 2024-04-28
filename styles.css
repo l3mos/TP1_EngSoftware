@@ -1,17 +1,56 @@
 /* Arquivo de estilos universal */
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #3a3a3a;
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+/* Estilos de tags */
+
+body {
+    font-family: Arial, Helvetica, sans-serif; 
+    line-height: 1.6; 
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4; 
+    color: #3a3a3a; 
 }
 
-footer p {
-    margin: 0;
+header {
+    background: #3a3a3a;
+    color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f4f4f4;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 0 10px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid;
+    text-align: center;
 }
 
 button {
@@ -29,18 +68,41 @@ button {
     outline: none;
 }
 
-/* Para caso seja necessário colocar sombras nos botões */
-.button {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #3a3a3a;
+    color: #f4f4f4;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
+footer p {
+    margin: 0;
+}
+
+/* Estilos de viewport */
+
+@media (max-width: 600px) {
+    nav ul {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* Estilos de "estados" de tags */
 
 button:hover {
     background-color: #575757;
 }
 
-a.link-button {
-    text-decoration: none;
-}
+/* Estilos de atributos */
 
 input[type=submit] {
     width: 80%; /* Ajustando a largura do botão */
@@ -58,6 +120,19 @@ input[type=submit]:hover {
     background-color: #575757;
 }
 
+/* Estilos de classes */
+
+.button {
+    /* Para caso seja necessário colocar sombras nos botões */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 .copyright-text {
     color: white;
+}
+
+/* Estilos de subclasses */
+
+a.link-button {
+    text-decoration: none;
 }
