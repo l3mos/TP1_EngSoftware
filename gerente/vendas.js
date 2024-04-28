@@ -1,59 +1,31 @@
-const fetch = require('node-fetch');
-const readlineSync = require('readline-sync');
+const express = require('express');
+const fs = require('fs');
+const csvParser = require('csv-parser');
 
-const tabelaVendas = document.querySelector('#vendas table');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const adicionarVenda = () => {
-    const nomeItem = readlineSync.question("Insira o nome do item: ");
-    const quantidade = parseInt(readlineSync.question("Insira a quantidade vendida: "));
+// Caminho para o arquivo CSV
+const csvFilePath = 'dataset.csv';
 
-    fetch('http://127.0.0.1:5500/TP1_EngSoftware/gerente/produtos/' + nomeItem, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ quantidade })
+// Array para armazenar os dados do CSV
+let dataset = [];
+
+// Lendo o arquivo CSV e criando o dataset
+fs.createReadStream(csvFilePath)
+    .pipe(csvParser())
+    .on('data', (row) => {
+        dataset.push(row);
     })
-    .then(response => response.json())
-    .then(produtoAtualizado => {
-        atualizarTabelaVendas(produtoAtualizado);
-    })
-    .catch(error => {
-        console.error('Erro ao adicionar venda:', error);
-        alert(`Ocorreu um erro ao adicionar a venda para o produto ${nomeItem}.`);
+    .on('end', () => {
+        console.log('Dataset carregado com sucesso:', dataset);
     });
-};
 
-const atualizarTabelaVendas = (produtoAtualizado) => {
-    tabelaVendas.innerHTML = `
-        <tr>
-            <td>Produto</td>
-            <td>Quantidade</td>
-        </tr>
-    `;
-
-    for (const produto in produtoAtualizado) {
-        if (produtoAtualizado.hasOwnProperty(produto)) {
-            tabelaVendas.innerHTML += `
-                <tr>
-                    <td>${produto}</td>
-                    <td>${produtoAtualizado[produto].quantidade}</td>
-                </tr>
-            `;
-        }
-    }
-};
-
-// Carregar os dados do servidor ao carregar o script
-fetch('http://127.0.0.1:5500/TP1_EngSoftware/gerente/produtos')
-.then(response => response.json())
-.then(data => {
-    atualizarTabelaVendas(data);
-})
-.catch(error => {
-    console.error('Erro ao carregar produtos:', error);
-    alert('Ocorreu um erro ao carregar os produtos.');
+// Rota para obter todos os produtos
+app.get('/produtos', (req, res) => {
+    res.json(dataset);
 });
 
-// Simular o clique no botão de adicionar venda
-adicionarVenda();
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+});

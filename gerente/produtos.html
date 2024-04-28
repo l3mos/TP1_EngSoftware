@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Gerente</title>
+    <title>Página Inicial</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="produtos.css"> <!-- Estilo específico para a página de produtos -->
+    <link rel="stylesheet" href="vendas.css">
 </head>
-
 <body>
     <header>
-        <h1>Produtos Disponíveis</h1>
+        <h1>Bem-vindo, Gerente</h1>
         <nav>
             <ul>
                 <li><a href="pag_inicial_gerente.html">Início</a></li>
-                <li><a href="produtos.html" class="active">Produtos</a></li> <!-- Marcar a página atual como ativa -->
-                <li><a href="notificacoes.html">Notificações</a></li>
+                <li><a href="#prod">Produtos</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
                 <li><a href="vendas.html">Vendas</a></li>
                 <li><a href="register.html">Cadastrar Funcionário</a></li>
                 <li><a href="../login/login.html">Sair</a></li>
@@ -24,18 +22,181 @@
         </nav>
     </header>
 
-    <section id="lista-produtos">
-        <h2>Lista de Produtos</h2>
-        <table id="produtos-table">
-            <!-- Tabela será preenchida dinamicamente pelo JavaScript -->
+    <section id="vendas">
+        <h2>Histórico deste mês</h2>
+        <table id="tabela-vendas" width="100%">
+            <tr>
+                <td>Produto</td>
+                <td>Quantidade</td>
+            </tr>
         </table>
+        <button id="btnAdicionarVenda">Adicionar Venda</button>
+        <input type="file" id="fileInput" accept=".csv">
     </section>
 
     <footer>
         <p>© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="produtos.js"></script>
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabelaProdutos = document.getElementById('tabela-vendas');
+            const fileInput = document.getElementById('fileInput');
 
+            // Abrir ou criar o banco de dados
+            const request = window.indexedDB.open('produtosDB', 1);
+
+            // Lidar com o evento de sucesso da abertura do banco de dados
+            request.onsuccess = (event) => {
+                console.log('Banco de dados aberto com sucesso');
+                atualizarTabelaVendas();
+            };
+
+            // Lidar com o evento de falha na abertura do banco de dados
+            request.onerror = (event) => {
+                console.error('Erro ao abrir o banco de dados:', event.target.error);
+            };
+
+            // Lidar com o evento de upgrade do banco de dados (criar objeto de armazenamento de objetos)
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+
+                // Criar um objeto de armazenamento de objetos chamado "produtos"
+                const objectStore = db.createObjectStore('produtos', { keyPath: 'id', autoIncrement: true });
+
+                // Definir os índices para o objeto de armazenamento
+                objectStore.createIndex('nome', 'nome', { unique: true });
+                objectStore.createIndex('preco', 'preco', { unique: false });
+                objectStore.createIndex('descricao', 'descricao', { unique: false });
+                objectStore.createIndex('quantidade', 'quantidade', { unique: false });
+
+                console.log('Objeto de armazenamento de produtos criado com sucesso');
+            };
+
+            // Adicionar evento de change ao input de arquivo
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    lerArquivoCSV(file);
+                }
+            });
+
+            // Função para ler arquivo CSV
+            function lerArquivoCSV(file) {
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                    const texto = event.target.result;
+                    const linhas = texto.split('\n').map(linha => linha.split(','));
+                    adicionarProdutosAoBancoDeDados(linhas);
+                };
+
+                reader.readAsText(file);
+            }
+
+            // Função para adicionar produtos ao banco de dados
+            function adicionarProdutosAoBancoDeDados(linhas) {
+                const request = window.indexedDB.open('produtosDB', 1);
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['produtos'], 'readwrite');
+                    const objectStore = transaction.objectStore('produtos');
+
+                    linhas.forEach(linha => {
+                        const [nome, preco, descricao, quantidade] = linha;
+                        const novoProduto = {
+                            nome: nome.trim(),
+                            preco: parseFloat(preco.trim()),
+                            descricao: descricao.trim(),
+                            quantidade: parseInt(quantidade.trim())
+                        };
+                        objectStore.add(novoProduto);
+                    });
+
+                    console.log('Produtos adicionados com sucesso ao banco de dados');
+                    atualizarTabelaVendas();
+                };
+
+                request.onerror = (event) => {
+                    console.error('Erro ao abrir o banco de dados:', event.target.error);
+                };
+            }
+
+            // Função para atualizar a tabela de vendas
+            function atualizarTabelaVendas() {
+                const transaction = request.result.transaction(['produtos'], 'readonly');
+                const objectStore = transaction.objectStore('produtos');
+                const getRequest = objectStore.getAll();
+
+                getRequest.onsuccess = (event) => {
+                    const produtos = event.target.result;
+
+                    // Limpar tabela antes de atualizar
+                    tabelaProdutos.innerHTML = `
+                        <tr>
+                            <td>Produto</td>
+                            <td>Quantidade</td>
+                        </tr>
+                    `;
+
+                    // Adicionar produtos à tabela
+                    produtos.forEach(produto => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${produto.nome}</td>
+                            <td>${produto.quantidade}</td>
+                        `;
+                        tabelaProdutos.appendChild(tr);
+                    });
+                };
+
+                getRequest.onerror = (event) => {
+                    console.error('Erro ao buscar produtos:', event.target.error);
+                };
+            }
+
+            // Adicionar evento de clique ao botão de adicionar venda
+            document.getElementById('btnAdicionarVenda').addEventListener('click', () => {
+                // Lógica para abrir o pop-up e permitir ao usuário adicionar uma venda
+                const nomeItem = prompt("Insira o nome do item:");
+                const quantidade = parseInt(prompt("Insira a quantidade vendida:"));
+
+                const request = window.indexedDB.open('produtosDB', 1);
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['produtos'], 'readwrite');
+                    const objectStore = transaction.objectStore('produtos');
+
+                    const getRequest = objectStore.getAll();
+
+                    getRequest.onsuccess = (event) => {
+                        const produtos = event.target.result;
+                        const produto = produtos.find(item => item.nome === nomeItem);
+
+                        if (produto) {
+                            produto.quantidade -= quantidade;
+                            objectStore.put(produto);
+                            console.log(`Venda de ${quantidade} unidades de ${nomeItem} registrada.`);
+                            atualizarTabelaVendas();
+                        } else {
+                            console.error(`O produto ${nomeItem} não foi encontrado.`);
+                            alert(`O produto ${nomeItem} não foi encontrado.`);
+                        }
+                    };
+
+                    getRequest.onerror = (event) => {
+                        console.error('Erro ao buscar produtos:', event.target.error);
+                    };
+                };
+
+                request.onerror = (event) => {
+                    console.error('Erro ao abrir o banco de dados:', event.target.error);
+                };
+            });
+
+        });
+    </script>
+</body>
 </html>

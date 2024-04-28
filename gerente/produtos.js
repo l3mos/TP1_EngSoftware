@@ -1,31 +1,31 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const produtosTable = document.getElementById('produtos-table');
+const express = require('express');
+const fs = require('fs');
+const csvParser = require('csv-parser');
 
-    fetch('dataset.csv')
-        .then(response => response.text())
-        .then(csv => {
-            const lines = csv.split('\n');
-            let tableHTML = '<thead><tr>';
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-            lines.forEach((line, index) => {
-                const columns = line.split(',');
+// Caminho para o arquivo CSV
+const csvFilePath = 'dataset.csv';
 
-                // Cria o cabeçalho da tabela na primeira iteração
-                if (index === 0) {
-                    columns.forEach(column => {
-                        tableHTML += `<th>${column}</th>`;
-                    });
-                    tableHTML += '</tr></thead><tbody>';
-                } else {
-                    tableHTML += '<tr>';
-                    columns.forEach(column => {
-                        tableHTML += `<td>${column}</td>`;
-                    });
-                    tableHTML += '</tr>';
-                }
-            });
+// Array para armazenar os dados do CSV
+let dataset = [];
 
-            tableHTML += '</tbody>';
-            produtosTable.innerHTML = tableHTML;
-        });
+// Lendo o arquivo CSV e criando o dataset
+fs.createReadStream(csvFilePath)
+    .pipe(csvParser())
+    .on('data', (row) => {
+        dataset.push(row);
+    })
+    .on('end', () => {
+        console.log('Dataset carregado com sucesso:', dataset);
+    });
+
+// Rota para obter todos os produtos
+app.get('/produtos', (req, res) => {
+    res.json(dataset);
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

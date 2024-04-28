@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - Gerente</title>
+    <title>Página Inicial</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="pag_inicial_gerente.css">
+    <link rel="stylesheet" href="vendas.css">
 </head>
 
 <body>
@@ -23,46 +23,23 @@
             </ul>
         </nav>
     </header>
-    
-    <section id="bloco-notificacao">
-        <h2>Notificações ativas</h2>
-        <div id="notificacao-ativa">
-           <p> Você tem 1 notificação ativa</p>
-           <!-- Placeholder no href do link -->
-           <a class="link-button" href="../login/login.html"><button>Ver notificações</button></a> 
-        </div>
-    </section>
 
     <section id="vendas">
-        <h2>Histórico de vendas</h2>
-        <table width="100%">
+        <h2>Histórico deste mês</h2>
+        <table id="tabela-vendas" width="100%">
             <tr>
                 <td>Produto</td>
                 <td>Quantidade</td>
-                <td>Valor/unidade</td>
-                <td>Valor total</td>
-                <td>Horário</td>
-                <td>Vendedor</td>
-            </tr>
-            <tr>
-                <td>Pacote de papel</td>
-                <td>2</td>
-                <td>30,00</td>
-                <td>Valor total</td>
-                <td>18:25</td>
-                <td>Vendedor 1</td>
             </tr>
         </table>
-        <div class="container">
-            <a class="link-button" href="vendas.html"><button>Ver Histórico de vendas completo</button></a>
-        </div>
+        <button id="btnAdicionarVenda">Adicionar Venda</button>
     </section>
 
     <footer>
-        <p id="copyright-text">© 2024 GerCompras. Todos os direitos reservados.</p>
+        <p>© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="pag_inicial_gerente.js"></script>
+    <script src="vendas.js"></script>
 </body>
 
 </html>
