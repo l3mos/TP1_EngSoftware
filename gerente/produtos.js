@@ -1,31 +1,35 @@
-const express = require('express');
-const fs = require('fs');
-const csvParser = require('csv-parser');
+document.addEventListener('DOMContentLoaded', () => {
+    const tabelaProdutos = document.getElementById('tabela-vendas');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+    // Função para importar dados do CSV para a tabela
+    function importarDadosCSV() {
+        fetch('dataset.csv') // Altere 'dataset.csv' para o caminho do seu arquivo CSV
+            .then(response => response.text())
+            .then(text => {
+                const linhas = text.trim().split('\n'); // Remove espaços em branco e quebra de linha
+                tabelaProdutos.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
 
-// Caminho para o arquivo CSV
-const csvFilePath = 'dataset.csv';
+                linhas.forEach(linha => {
+                    const colunas = linha.split(',');
+                    if (colunas.length === 3) { // Verifica se há 3 colunas (nome, preço, quantidade)
+                        const [nome, preco, quantidade] = colunas;
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${nome.trim()}</td>
+                            <td>${parseFloat(preco)}</td>
+                            <td>${parseInt(quantidade)}</td>
+                        `;
+                        tabelaProdutos.appendChild(tr);
+                    } else {
+                        console.warn('Ignorando linha inválida:', linha);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao ler arquivo CSV:', error);
+            });
+    }
 
-// Array para armazenar os dados do CSV
-let dataset = [];
-
-// Lendo o arquivo CSV e criando o dataset
-fs.createReadStream(csvFilePath)
-    .pipe(csvParser())
-    .on('data', (row) => {
-        dataset.push(row);
-    })
-    .on('end', () => {
-        console.log('Dataset carregado com sucesso:', dataset);
-    });
-
-// Rota para obter todos os produtos
-app.get('/produtos', (req, res) => {
-    res.json(dataset);
-});
-
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    // Chama a função para importar os dados do CSV quando a página é carregada
+    importarDadosCSV();
 });

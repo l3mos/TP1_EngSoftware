@@ -24,55 +24,31 @@
 
     <section id="vendas">
         <button id="btnAdicionarVenda">Adicionar Venda</button>
+        <table id="tabela-vendas">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor Unitário</th>
+                    <th>Quantidade Vendida</th>
+                    <th>Valor Total</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela-vendas">
+                <!-- As linhas da tabela serão preenchidas dinamicamente -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="vendas-total">
+        <h2>Vendas Total</h2>
+        <p id="quantidade-total"></p>
+        <p id="valor-total"></p>
     </section>
 
     <footer>
         <p>© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // Adicionar evento de clique ao botão de adicionar venda
-            document.getElementById('btnAdicionarVenda').addEventListener('click', () => {
-                // Lógica para abrir o pop-up e permitir ao usuário adicionar uma venda
-                const nomeItem = prompt("Insira o nome do item:");
-                const quantidade = parseInt(prompt("Insira a quantidade vendida:"));
-
-                const request = window.indexedDB.open('produtosDB', 1);
-
-                request.onsuccess = (event) => {
-                    const db = event.target.result;
-                    const transaction = db.transaction(['produtos'], 'readwrite');
-                    const objectStore = transaction.objectStore('produtos');
-
-                    const getRequest = objectStore.getAll();
-
-                    getRequest.onsuccess = (event) => {
-                        const produtos = event.target.result;
-                        const produto = produtos.find(item => item.nome === nomeItem);
-
-                        if (produto) {
-                            produto.quantidade -= quantidade;
-                            objectStore.put(produto);
-                            console.log(`Venda de ${quantidade} unidades de ${nomeItem} registrada.`);
-                        } else {
-                            console.error(`O produto ${nomeItem} não foi encontrado.`);
-                            alert(`O produto ${nomeItem} não foi encontrado.`);
-                        }
-                    };
-
-                    getRequest.onerror = (event) => {
-                        console.error('Erro ao buscar produtos:', event.target.error);
-                    };
-                };
-
-                request.onerror = (event) => {
-                    console.error('Erro ao abrir o banco de dados:', event.target.error);
-                };
-            });
-
-        });
-    </script>
+    <script src="vendas.js"></script>
 </body>
 </html>

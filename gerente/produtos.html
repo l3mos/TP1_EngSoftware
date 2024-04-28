@@ -25,11 +25,7 @@
     <section id="vendas">
         <h2>Produtos Disponíveis</h2>
         <table id="tabela-vendas" width="100%">
-            <tr>
-                <td>Produto</td>
-                <td>Preço</td>
-                <td>Quantidade</td>
-            </tr>
+            <!-- Tabela de produtos será preenchida dinamicamente -->
         </table>
     </section>
 
@@ -37,60 +33,6 @@
         <p>© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabelaProdutos = document.getElementById('tabela-vendas');
-
-            // Abrir ou criar o banco de dados
-            const request = window.indexedDB.open('produtosDB', 1);
-
-            // Lidar com o evento de sucesso da abertura do banco de dados
-            request.onsuccess = (event) => {
-                console.log('Banco de dados aberto com sucesso');
-                atualizarTabelaVendas();
-            };
-
-            // Lidar com o evento de falha na abertura do banco de dados
-            request.onerror = (event) => {
-                console.error('Erro ao abrir o banco de dados:', event.target.error);
-            };
-
-            // Função para atualizar a tabela de vendas
-            function atualizarTabelaVendas() {
-                const transaction = request.result.transaction(['produtos'], 'readonly');
-                const objectStore = transaction.objectStore('produtos');
-                const getRequest = objectStore.getAll();
-
-                getRequest.onsuccess = (event) => {
-                    const produtos = event.target.result;
-
-                    // Limpar tabela antes de atualizar
-                    tabelaProdutos.innerHTML = `
-                        <tr>
-                            <td>Produto</td>
-                            <td>Preço</td>
-                            <td>Quantidade</td>
-                        </tr>
-                    `;
-
-                    // Adicionar produtos à tabela
-                    produtos.forEach(produto => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${produto.nome}</td>
-                            <td>${produto.preco}</td>
-                            <td>${produto.quantidade}</td>
-                        `;
-                        tabelaProdutos.appendChild(tr);
-                    });
-                };
-
-                getRequest.onerror = (event) => {
-                    console.error('Erro ao buscar produtos:', event.target.error);
-                };
-            }
-
-        });
-    </script>
+    <script src="produtos.js"></script>
 </body>
 </html>

@@ -1,32 +1,45 @@
-// Selecionando o botão "Ver notificações"
-const btnVerNotificacoes = document.querySelector('#bloco-notificacao .link-button');
+document.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.getElementById('corpo-tabela-funcionarios');
+    const btnRemoverFuncionario = document.getElementById('btn-remover-funcionario');
 
-// Adicionando um evento de clique ao botão "Ver notificações"
-btnVerNotificacoes.addEventListener('click', function(event) {
-    event.preventDefault(); // Impede o comportamento padrão do link
+    mostrarFuncionarios();
 
-    // Redirecionar para a página de notificações
-    window.location.href = "notificacoes.html";
-});
+    btnRemoverFuncionario.addEventListener('click', removerFuncionario);
 
-// Selecionando o botão "Ver Histórico de vendas completo"
-const btnVerHistoricoVendas = document.querySelector('#vendas .link-button');
+    function mostrarFuncionarios() {
+        const users = getUsers();
 
-// Adicionando um evento de clique ao botão "Ver Histórico de vendas completo"
-btnVerHistoricoVendas.addEventListener('click', function(event) {
-    event.preventDefault(); // Impede o comportamento padrão do link
+        tbody.innerHTML = ''; // Limpa o corpo da tabela antes de preencher novamente
 
-    // Redirecionar para a página de vendas
-    window.location.href = "vendas.html";
-});
+        users.forEach(user => {
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td>${user.username}</td>
+                <td>${user.password}</td>
+            `;
+        });
+    }
 
-// Selecionando o botão "Produtos"
-const btnVerProdutos = document.querySelector('nav ul li:nth-child(2) a');
+    function getUsers() {
+        const usersJSON = localStorage.getItem('users');
+        return usersJSON ? JSON.parse(usersJSON) : [];
+    }
 
-// Adicionando um evento de clique ao botão "Produtos"
-btnVerProdutos.addEventListener('click', function(event) {
-    event.preventDefault(); // Impede o comportamento padrão do link
+    function removerFuncionario() {
+        const nomeFuncionario = document.getElementById('input-nome-funcionario').value.trim();
+        if (nomeFuncionario === '') {
+            alert('Por favor, digite o nome do funcionário.');
+            return;
+        }
 
-    // Redirecionar para a página de produtos
-    window.location.href = "produtos.html";
+        let users = getUsers();
+        const index = users.findIndex(user => user.username === nomeFuncionario);
+        if (index !== -1) {
+            users.splice(index, 1);
+            localStorage.setItem('users', JSON.stringify(users));
+            mostrarFuncionarios(); // Atualiza a tabela após a remoção
+        } else {
+            alert('Funcionário não encontrado.');
+        }
+    }
 });

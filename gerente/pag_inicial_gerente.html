@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
     <link rel="stylesheet" href="../styles.css">
-    <!-- <link rel="stylesheet" href="pag_inicial_gerente.css"> -->
     <link rel="stylesheet" href="vendas.css">
 </head>
 
@@ -25,22 +24,33 @@
         </nav>
     </header>
 
-    <section id="vendas">
-        <h2>Histórico deste mês</h2>
-        <table id="tabela-vendas" width="100%">
-            <tr>
-                <td>Produto</td>
-                <td>Quantidade</td>
-            </tr>
+    <section id="funcionarios">
+        <h2>Funcionários Cadastrados</h2>
+        <table id="tabela-funcionarios" width="100%">
+            <thead>
+                <tr>
+                    <th>Nome do Funcionário</th>
+                    <th>Senha</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela-funcionarios">
+                <!-- As linhas da tabela serão preenchidas dinamicamente -->
+            </tbody>
         </table>
-        <button id="btnAdicionarVenda">Adicionar Venda</button>
+
+        <div id="remover-funcionario">
+            <h3>Remover Funcionário</h3>
+            <label for="input-nome-funcionario">Nome do Funcionário:</label>
+            <input type="text" id="input-nome-funcionario" placeholder="Digite o nome do funcionário">
+            <button id="btn-remover-funcionario">Remover</button>
+        </div>
     </section>
 
     <footer>
         <p>© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="vendas.js"></script>
+    <script src="pag_inicial_gerente.js"></script>
 </body>
 
 </html>
