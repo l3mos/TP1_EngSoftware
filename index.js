@@ -6,4 +6,4 @@ const port = 3000
 app.use(express.static('./'));
 
 // Teste inicial no terminal
-app.listen(port, () => { console.log('Ouvindo na porta: ${port}') })
+app.listen(port, () => { console.log(`Ouvindo na porta: ${port}`) })

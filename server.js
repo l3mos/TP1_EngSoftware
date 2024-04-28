@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Serve os arquivos estáticos do diretório raiz e seus subdiretórios
+app.use(express.static('./'));
+
 // Middleware para processar o corpo da solicitação como JSON
 app.use(bodyParser.json());
 
