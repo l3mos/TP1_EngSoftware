@@ -1,0 +1,38 @@
+/* Estilo específico para a página de produtos */
+
+/* Estilo do header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilo do título */
+h1 {
+    margin: 0;
+}
+
+/* Estilo da lista de produtos */
+#lista-produtos {
+    margin: 20px;
+}
+
+/* Estilo dos itens da lista */
+#lista-produtos ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#lista-produtos ul li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Estilo do footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
