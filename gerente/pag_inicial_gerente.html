@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>Página Inicial do Gerente</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="vendas.css">
+    <link rel="stylesheet" href="pag_inicial_gerente.css"> <!-- Adicionando arquivo CSS para estilização -->
+    <script src="pag_inicial_gerente.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>Bem-vindo, Gerente</h1>
+        <h1>Página Inicial do Gerente</h1>
         <nav>
             <ul>
                 <li><a href="pag_inicial_gerente.html">Início</a></li>
@@ -24,33 +25,28 @@
         </nav>
     </header>
 
-    <section id="funcionarios">
-        <h2>Funcionários Cadastrados</h2>
-        <table id="tabela-funcionarios" width="100%">
+    <section id="tabela-funcionarios">
+        <h2>Tabela de Funcionários</h2>
+        <table>
             <thead>
                 <tr>
-                    <th>Nome do Funcionário</th>
+                    <th>Nome</th>
                     <th>Senha</th>
                 </tr>
             </thead>
             <tbody id="corpo-tabela-funcionarios">
-                <!-- As linhas da tabela serão preenchidas dinamicamente -->
             </tbody>
         </table>
-
-        <div id="remover-funcionario">
-            <h3>Remover Funcionário</h3>
-            <label for="input-nome-funcionario">Nome do Funcionário:</label>
-            <input type="text" id="input-nome-funcionario" placeholder="Digite o nome do funcionário">
-            <button id="btn-remover-funcionario">Remover</button>
+        <div class="input-container"> <!-- Div para agrupar os inputs -->
+            <input type="text" id="input-nome-funcionario" class="input-nome" placeholder="Nome do Funcionário">
+            <input type="text" id="input-senha-funcionario" class="input-senha" placeholder="Senha do Funcionário">
         </div>
+        <button id="btn-remover-funcionario">Remover Funcionário</button>
     </section>
 
     <footer>
-        <p>© 2024 GerCompras. Todos os direitos reservados.</p>
+        <p class="copyright-text">© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="pag_inicial_gerente.js"></script>
 </body>
 
 </html>

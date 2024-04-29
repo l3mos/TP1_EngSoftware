@@ -7,7 +7,6 @@
     <title>Página de Vendas</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="vendas.css">
-    <script defer src="vendas.js"></script>
 </head>
 
 <body>
@@ -27,6 +26,7 @@
 
     <section id="vendas">
         <button id="btnAdicionarVenda">Adicionar Venda</button>
+
         <table id="tabela-vendas">
             <thead>
                 <tr>
@@ -47,12 +47,12 @@
         <p id="quantidade-total"></p>
         <p id="valor-total"></p>
     </section>
-
+    <button id="btnLimparVendas">Limpar Vendas</button> <!-- Botão adicionado -->
     <footer>
         <p class="copyright-text">© 2024 GerCompras. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="vendas.js"></script>
+    <script src="vendas.js" defer></script>
 </body>
 
 </html>

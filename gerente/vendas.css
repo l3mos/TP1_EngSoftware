@@ -1,21 +1,102 @@
+/* styles.css */
+
+/* Estilos gerais */
 body {
-    background: #f4f4f4; 
-    color: #3a3a3a; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-#error-msg {
-    color: red;
-    visibility: hidden; 
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
 }
 
-#relatorio{
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos específicos para a página de vendas */
+#vendas {
+    margin-bottom: 50px; /* Para evitar que o footer cubra o conteúdo */
+}
+
+#btnAdicionarVenda {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#btnLimparVendas {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#tabela-vendas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabela-vendas th, #tabela-vendas td {
     border: 1px solid #ddd;
-    border-radius: 10%;
+    padding: 8px;
+    text-align: left;
 }
 
-.container{
-    width: 700px; 
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; 
+#tabela-vendas th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#vendas-total {
+    margin-top: 50px;
+}
+
+#vendas-total h2 {
+    margin-bottom: 10px;
+}
+
+#quantidade-total, #valor-total {
+    font-weight: bold;
 }

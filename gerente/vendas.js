@@ -15,7 +15,7 @@ function adicionarVenda() {
         return;
     }
 
-    // Fazer uma requisição para o arquivo CSV para buscar o valor unitário do produto
+    // Fazer uma requisição para o arquivo CSV para buscar o valor unitário e a quantidade disponível do produto
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -23,16 +23,22 @@ function adicionarVenda() {
                 var linhas = xhr.responseText.split('\n');
                 var encontrado = false;
                 var valorUnitario = 0;
+                var quantidadeDisponivel = 0;
                 for (var i = 0; i < linhas.length; i++) {
                     var dados = linhas[i].split(',');
                     if (dados[0] === nome) {
                         valorUnitario = parseFloat(dados[1]);
+                        quantidadeDisponivel = parseInt(dados[2]);
                         encontrado = true;
                         break;
                     }
                 }
                 if (!encontrado) {
                     alert("Produto não encontrado no dataset.");
+                    return;
+                }
+                if (quantidade > quantidadeDisponivel) {
+                    alert("Quantidade vendida maior do que a quantidade disponível no estoque.");
                     return;
                 }
                 // Calcular o preço da venda e o preço total
@@ -51,6 +57,7 @@ function adicionarVenda() {
     xhr.open("GET", "dataset.csv", true);
     xhr.send();
 }
+
 
 function atualizarTotalVendas() {
     var totalQuantidade = 0;
@@ -81,3 +88,25 @@ function carregarTabelaVendas() {
         atualizarTotalVendas();
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Carregar dados da tabela de vendas do armazenamento local ao carregar a página
+    carregarTabelaVendas();
+
+    var btnAdicionarVenda = document.getElementById("btnAdicionarVenda");
+    btnAdicionarVenda.addEventListener("click", adicionarVenda);
+
+    var btnLimparVendas = document.getElementById("btnLimparVendas");
+    btnLimparVendas.addEventListener("click", limparVendas);
+});
+
+function limparVendas() {
+    // Limpar a tabela de vendas
+    document.getElementById("corpo-tabela-vendas").innerHTML = "";
+    // Atualizar o total de vendas após limpar a tabela
+    atualizarTotalVendas();
+    // Salvar os dados da tabela de vendas vazia no armazenamento local
+    salvarTabelaVendas();
+}
+
+// A função salvarTabelaVendas() e carregarTabelaVendas() permanecem as mesmas
