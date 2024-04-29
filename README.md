@@ -87,7 +87,7 @@ Tarefas e responsáveis:
 - Criar lógica de verificação da quantidade de itens a cada venda, caso esteja abaixo de um valor estipulado, avisar ao usuário da plataforma.
 - Criar ícone de notificação de quantidade baixa de produto (front end).
 
-## BackLog da Sprint - Atualizada
+## Backlog da Sprint - Atualizada
 História #1: Como um gerente, eu quero adicionar vendedores.
 
 Tarefas e responsáveis:
