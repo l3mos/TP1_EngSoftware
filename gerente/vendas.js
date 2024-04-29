@@ -1,86 +1,83 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const tbody = document.getElementById('corpo-tabela-vendas');
-    const btnAdicionarVenda = document.getElementById('btnAdicionarVenda');
-    const quantidadeTotalElement = document.getElementById('quantidade-total');
-    const valorTotalElement = document.getElementById('valor-total');
+document.addEventListener("DOMContentLoaded", function() {
+    // Carregar dados da tabela de vendas do armazenamento local ao carregar a página
+    carregarTabelaVendas();
 
-    let vendas = [];
+    var btnAdicionarVenda = document.getElementById("btnAdicionarVenda");
+    btnAdicionarVenda.addEventListener("click", adicionarVenda);
+});
 
-    // Verifica se existem vendas armazenadas na sessão e carrega
-    if (sessionStorage.getItem('vendas')) {
-        vendas = JSON.parse(sessionStorage.getItem('vendas'));
-        mostrarVendas();
-        mostrarVendasTotais();
+function adicionarVenda() {
+    var nome = prompt("Digite o nome do produto:");
+    var quantidade = parseInt(prompt("Digite a quantidade vendida:"));
+
+    if (nome === null || quantidade === null || nome.trim() === "" || isNaN(quantidade) || quantidade <= 0) {
+        alert("Por favor, preencha todos os campos com valores válidos.");
+        return;
     }
 
-    btnAdicionarVenda.addEventListener('click', () => {
-        const nomeItem = prompt("Insira o nome do item:");
-        const quantidade = parseInt(prompt("Insira a quantidade vendida:"));
-
-        fetch('dataset.csv') // Altere 'dataset.csv' para o caminho do seu arquivo CSV
-            .then(response => response.text())
-            .then(text => {
-                const linhas = text.trim().split('\n');
-                let encontrado = false;
-
-                linhas.forEach(linha => {
-                    const [nome, preco, estoque] = linha.split(',');
-
-                    if (nome.trim() === nomeItem) {
+    // Fazer uma requisição para o arquivo CSV para buscar o valor unitário do produto
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var linhas = xhr.responseText.split('\n');
+                var encontrado = false;
+                var valorUnitario = 0;
+                for (var i = 0; i < linhas.length; i++) {
+                    var dados = linhas[i].split(',');
+                    if (dados[0] === nome) {
+                        valorUnitario = parseFloat(dados[1]);
                         encontrado = true;
-                        const precoUnitario = parseFloat(preco);
-                        const estoqueAtual = parseInt(estoque);
-
-                        if (quantidade > 0 && quantidade <= estoqueAtual) {
-                            const valorTotal = quantidade * precoUnitario;
-
-                            const venda = {
-                                nome: nome,
-                                precoUnitario: precoUnitario,
-                                quantidade: quantidade,
-                                valorTotal: valorTotal
-                            };
-
-                            vendas.push(venda);
-                            sessionStorage.setItem('vendas', JSON.stringify(vendas));
-                            mostrarVendas();
-                            mostrarVendasTotais();
-                        } else {
-                            console.error(`Quantidade inválida para venda do produto ${nomeItem}`);
-                            alert(`Quantidade inválida para venda do produto ${nomeItem}`);
-                        }
+                        break;
                     }
-                });
-
-                if (!encontrado) {
-                    console.error(`O produto ${nomeItem} não foi encontrado.`);
-                    alert(`O produto ${nomeItem} não foi encontrado.`);
                 }
-            })
-            .catch(error => {
-                console.error('Erro ao ler arquivo CSV:', error);
-            });
+                if (!encontrado) {
+                    alert("Produto não encontrado no dataset.");
+                    return;
+                }
+                // Calcular o preço da venda e o preço total
+                var precoVenda = valorUnitario * quantidade;
+                var linha = "<tr><td>" + nome + "</td><td>" + valorUnitario.toFixed(2) + "</td><td>" + quantidade + "</td><td>" + precoVenda.toFixed(2) + "</td></tr>";
+                document.getElementById("corpo-tabela-vendas").innerHTML += linha;
+                // Atualizar o total de vendas
+                atualizarTotalVendas();
+                // Salvar os dados da tabela de vendas no armazenamento local
+                salvarTabelaVendas();
+            } else {
+                alert("Erro ao carregar o arquivo.");
+            }
+        }
+    };
+    xhr.open("GET", "dataset.csv", true);
+    xhr.send();
+}
+
+function atualizarTotalVendas() {
+    var totalQuantidade = 0;
+    var totalValor = 0;
+
+    var linhas = document.querySelectorAll("#corpo-tabela-vendas tr");
+    linhas.forEach(function(linha) {
+        var quantidade = parseInt(linha.cells[2].textContent);
+        var precoVenda = parseFloat(linha.cells[3].textContent);
+        totalQuantidade += quantidade;
+        totalValor += precoVenda;
     });
 
-    function mostrarVendas() {
-        tbody.innerHTML = ''; // Limpa o corpo da tabela antes de preencher novamente
+    document.getElementById("quantidade-total").textContent = "Quantidade Total: " + totalQuantidade;
+    document.getElementById("valor-total").textContent = "Valor Total: " + totalValor.toFixed(2);
+}
 
-        vendas.forEach(venda => {
-            const newRow = tbody.insertRow(-1);
-            newRow.innerHTML = `
-                <td>${venda.nome}</td>
-                <td>${venda.precoUnitario}</td>
-                <td>${venda.quantidade}</td>
-                <td>${venda.valorTotal}</td>
-            `;
-        });
+function salvarTabelaVendas() {
+    var tabelaVendasHTML = document.getElementById("corpo-tabela-vendas").innerHTML;
+    localStorage.setItem("tabelaVendas", tabelaVendasHTML);
+}
+
+function carregarTabelaVendas() {
+    var tabelaVendasHTML = localStorage.getItem("tabelaVendas");
+    if (tabelaVendasHTML) {
+        document.getElementById("corpo-tabela-vendas").innerHTML = tabelaVendasHTML;
+        // Atualizar o total de vendas ao carregar os dados da tabela
+        atualizarTotalVendas();
     }
-
-    function mostrarVendasTotais() {
-        const quantidadeTotal = vendas.reduce((total, venda) => total + venda.quantidade, 0);
-        const valorTotal = vendas.reduce((total, venda) => total + venda.valorTotal, 0);
-
-        quantidadeTotalElement.textContent = `Total de ${quantidadeTotal} itens vendidos`;
-        valorTotalElement.textContent = `Total de R$ ${valorTotal.toFixed(2)} em vendas`;
-    }
-});
+}

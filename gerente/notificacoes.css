@@ -1,18 +1,5 @@
 /* Estilo específico para a página de notificações */
 
-/* Estilo do header */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Estilo do título */
-h1 {
-    margin: 0;
-}
-
 /* Estilo da lista de notificações */
 #lista-notificacoes {
     margin: 20px;
@@ -27,12 +14,4 @@ h1 {
 #lista-notificacoes ul li {
     margin-bottom: 10px;
     font-size: 18px;
-}
-
-/* Estilo do footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
 }

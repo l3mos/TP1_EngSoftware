@@ -1,35 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tabelaProdutos = document.getElementById('tabela-vendas');
+    const tabelaVendas = document.getElementById('tabela-vendas');
 
-    // Função para importar dados do CSV para a tabela
-    function importarDadosCSV() {
-        fetch('dataset.csv') // Altere 'dataset.csv' para o caminho do seu arquivo CSV
-            .then(response => response.text())
-            .then(text => {
-                const linhas = text.trim().split('\n'); // Remove espaços em branco e quebra de linha
-                tabelaProdutos.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
-
-                linhas.forEach(linha => {
-                    const colunas = linha.split(',');
-                    if (colunas.length === 3) { // Verifica se há 3 colunas (nome, preço, quantidade)
-                        const [nome, preco, quantidade] = colunas;
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${nome.trim()}</td>
-                            <td>${parseFloat(preco)}</td>
-                            <td>${parseInt(quantidade)}</td>
-                        `;
-                        tabelaProdutos.appendChild(tr);
-                    } else {
-                        console.warn('Ignorando linha inválida:', linha);
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Erro ao ler arquivo CSV:', error);
-            });
+    // Função para ler o arquivo CSV
+    function lerCSV(arquivo, callback) {
+        const request = new XMLHttpRequest();
+        request.open('GET', arquivo, true);
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+                callback(request.responseText);
+            }
+        };
+        request.send(null);
     }
 
-    // Chama a função para importar os dados do CSV quando a página é carregada
-    importarDadosCSV();
+    // Função para processar os dados do CSV e criar a tabela
+    function processarCSV(dadosCSV) {
+        const linhas = dadosCSV.split('\n');
+        let htmlTabela = '';
+
+        linhas.forEach((linha, indice) => {
+            const colunas = linha.split(',');
+            if (indice === 0) {
+                htmlTabela += '<thead>';
+                htmlTabela += '<tr>';
+                colunas.forEach(coluna => {
+                    htmlTabela += `<th>${coluna}</th>`;
+                });
+                htmlTabela += '</tr>';
+                htmlTabela += '</thead>';
+                htmlTabela += '<tbody>';
+            } else {
+                htmlTabela += '<tr>';
+                colunas.forEach(coluna => {
+                    htmlTabela += `<td>${coluna}</td>`;
+                });
+                htmlTabela += '</tr>';
+            }
+        });
+
+        htmlTabela += '</tbody>';
+
+        tabelaVendas.innerHTML = htmlTabela;
+    }
+
+    // Chamada para ler o arquivo CSV e processar os dados
+    lerCSV('dataset.csv', processarCSV);
 });
