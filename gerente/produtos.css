@@ -1,17 +1,84 @@
-/* Estilo específico para a página de produtos */
 
-/* Estilo da lista de produtos */
-#lista-produtos {
-    margin: 20px;
-}
-
-/* Estilo dos itens da lista */
-#lista-produtos ul {
-    list-style-type: none;
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 0;
 }
 
-#lista-produtos ul li {
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos específicos para a página de notificações */
+#lista-notificacoes {
+    margin-bottom: 50px; /* Para evitar que o footer cubra o conteúdo */
+}
+
+#notificacoes {
+    list-style: none;
+    padding: 0;
+}
+
+#notificacoes li {
     margin-bottom: 10px;
-    font-size: 18px;
+}
+
+/* Estilos específicos para a página de produtos */
+section#vendas {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+table#tabela-vendas {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+table#tabela-vendas th, table#tabela-vendas td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table#tabela-vendas th {
+    background-color: #f2f2f2;
+    color: #333;
 }
