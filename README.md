@@ -155,6 +155,13 @@ Tarefas e responsáveis:
 - Criar interface da remoção, na página inicial. [Lucas Duarte e Lucas Teles]
 - Implementar lógica da remoção de vendedores. [Camila Nicola e Gabriel Lemos]
 
-  
+## Sprint Review
+Durante esta sprint, implementamos as funcionalidades básicas requisitadas para o perfil de usuário gerencial. As funcionalidades desenvolvidas incluem uma visão panorâmica das vendas, um sistema de notificações recebidas dos vendedores sobre os produtos e a capacidade de manipular detalhes dos produtos, como preço e quantidade. Adicionalmente, criamos um módulo para o cadastro de novos usuários, permitindo a atribuição de diferentes permissões, como vendedor e gerente.
+
+## Retrospectiva da Sprint
+# O que deu certo
+Os pontos fortes da sprint incluíram a eficiente divisão das histórias em tarefas facilmente implementáveis e a escolha do WhatsApp como ferramenta de comunicação do grupo. Essas estratégias aprimoraram significativamente o acompanhamento do progresso de cada tarefa e a resolução de dúvidas sobre tecnologias e processos com a equipe.
+# O que poderia ser melhorado
+A comunicação durante o processo poderia ter sido mais frequente, o que permitiria que problemas e dúvidas fossem resolvidos com maior rapidez e eficácia. Incrementar a periodicidade das interações entre os membros da equipe poderia facilitar uma melhor sincronização e colaboração, garantindo que todos estivessem constantemente alinhados e capazes de reagir prontamente às necessidades do projeto.
 ## Tecnologias
 - Python, JavaScript, NodeJs, SQL, HTML (a princípio)
